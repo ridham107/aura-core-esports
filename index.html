@@ -1,1 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Aura Core Esports</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#07070b;
+  color:white;
+}
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 7%;
+  background:rgba(7,7,11,.96);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  border-bottom:1px solid #252530;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#8b5cf6;
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#8b5cf6;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:100px 20px 50px;
+  background:radial-gradient(circle at center,#32185c 0%,#07070b 60%);
+}
+
+.hero h1{
+  font-size:clamp(50px,9vw,95px);
+  letter-spacing:5px;
+  font-weight:900;
+}
+
+.hero h1 span{
+  color:#8b5cf6;
+}
+
+.hero p{
+  margin:20px auto 35px;
+  color:#b8b8c5;
+  font-size:20px;
+  max-width:650px;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 26px;
+  background:#8b5cf6;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  margin:5px;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  background:#a277ff;
+}
+
+.btn.secondary{
+  background:transparent;
+  border:1px solid #8b5cf6;
+}
+
+section{
+  padding:90px 7%;
+}
+
+.section-title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.section-subtitle{
+  text-align:center;
+  color:#9999a8;
+  margin-bottom:45px;
+}
+
+/* TOURNAMENTS */
+
+.tournaments{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.card{
+  background:#111118;
+  border:1px solid #292936;
+  border-radius:15px;
+  padding:28px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#8b5cf6;
+}
+
+.game{
+  color:#a277ff;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+
+.card h3{
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+.details{
+  color:#b5b5c0;
+  line-height:2;
+  margin-bottom:20px;
+}
+
+/* GAMES */
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.game-box{
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111118;
+  border:1px solid #292936;
+  border-radius:15px;
+  font-size:26px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.game-box:hover{
+  transform:translateY(-6px);
+  border-color:#8b5cf6;
+  box-shadow:0 10px 35px rgba(139,92,246,.2);
+}
+
+/* STATS */
+
+.stats{
+  background:#0e0e15;
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  text-align:center;
+  gap:25px;
+}
+
+.stat h2{
+  color:#8b5cf6;
+  font-size:45px;
+}
+
+.stat p{
+  color:#aaa;
+  margin-top:8px;
+}
+
+/* CONTACT */
+
+.contact{
+  text-align:center;
+  background:#0e0e15;
+}
+
+.contact p{
+  color:#aaa;
+  max-width:600px;
+  margin:15px auto 25px;
+}
+
+footer{
+  padding:25px;
+  text-align:center;
+  background:#050508;
+  color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  nav ul{
+    display:none;
+  }
+
+  .tournaments{
+    grid-template-columns:1fr;
+  }
+
+  .games{
+    grid-template-columns:1fr;
+  }
+
+  .stat-grid{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:70px 5%;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+AURA <span>CORE</span>
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#tournaments">Tournaments</a></li>
+<li><a href="#games">Games</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div>
+
+<h1>AURA <span>CORE</span></h1>
+
+<p>
+COMPETE. CONQUER. CREATE HISTORY.
+<br>
+Competitive tournaments for gamers.
+</p>
+
+<a href="#tournaments" class="btn">
+VIEW TOURNAMENTS
+</a>
+
+<a href="#games" class="btn secondary">
+EXPLORE GAMES
+</a>
+
+</div>
+
+</section>
+
+
+<!-- TOURNAMENTS -->
+
+<section id="tournaments">
+
+<h2 class="section-title">
+Upcoming Tournaments
+</h2>
+
+<p class="section-subtitle">
+Choose your game. Build your squad. Dominate.
+</p>
+
+
+<div class="tournaments">
+
+
+<!-- FREE FIRE -->
+
+<div class="card">
+
+<div class="game">
+🔥 FREE FIRE
+</div>
+
+<h3>
+Aura Core Free Fire Tournament
+</h3>
+
+<div class="details">
+
+📅 Date: Coming Soon<br>
+👥 Slots: 48 Teams<br>
+🏆 Prize Pool: Coming Soon<br>
+🎮 Mode: Squad
+
+</div>
+
+<a href="#contact" class="btn">
+REGISTER
+</a>
+
+</div>
+
+
+<!-- BGMI -->
+
+<div class="card">
+
+<div class="game">
+🎯 BGMI
+</div>
+
+<h3>
+Aura Core BGMI Tournament
+</h3>
+
+<div class="details">
+
+📅 Date: Coming Soon<br>
+👥 Slots: 25 Teams<br>
+🏆 Prize Pool: Coming Soon<br>
+🎮 Mode: Squad
+
+</div>
+
+<a href="#contact" class="btn">
+REGISTER
+</a>
+
+</div>
+
+
+<!-- VALORANT -->
+
+<div class="card">
+
+<div class="game">
+⚡ VALORANT
+</div>
+
+<h3>
+Aura Core Valorant Tournament
+</h3>
+
+<div class="details">
+
+📅 Date: Coming Soon<br>
+👥 Slots: 16 Teams<br>
+🏆 Prize Pool: Coming Soon<br>
+🎮 Mode: 5v5
+
+</div>
+
+<a href="#contact" class="btn">
+REGISTER
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stat-grid">
+
+<div class="stat">
+<h2>3</h2>
+<p>Games</p>
+</div>
+
+<div class="stat">
+<h2>0</h2>
+<p>Tournaments</p>
+</div>
+
+<div class="stat">
+<h2>0</h2>
+<p>Players</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section id="games">
+
+<h2 class="section-title">
+Our Games
+</h2>
+
+<p class="section-subtitle">
+Choose your battlefield.
+</p>
+
+
+<div class="games">
+
+<div class="game-box">
+🔥 Free Fire
+</div>
+
+<div class="game-box">
+🎯 BGMI
+</div>
+
+<div class="game-box">
+⚡ Valorant
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2 class="section-title">
+Ready to Compete?
+</h2>
+
+<p>
+Join Aura Core Esports and participate in upcoming tournaments.
+</p>
+
+<a href="#" class="btn">
+INSTAGRAM
+</a>
+
+<a href="#" class="btn secondary">
+WHATSAPP
+</a>
+
+</section>
+
+
+<footer>
+
+© 2026 Aura Core Esports. All Rights Reserved.
+
+</footer>
+
+</body>
+</html>
