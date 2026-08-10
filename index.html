@@ -1,1 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Aura Core Esports | Competitive Gaming</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#060609;
+    --card:#101016;
+    --card2:#15151d;
+    --purple:#8b5cf6;
+    --purple2:#a855f7;
+    --text:#fff;
+    --muted:#9b9ba8;
+    --border:#292934;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:999;
+    background:rgba(6,6,9,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #20202a;
+}
+
+.nav-container{
+    max-width:1250px;
+    margin:auto;
+    padding:17px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:var(--purple);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#d7d7df;
+    font-size:14px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:var(--purple);
+}
+
+.nav-register{
+    padding:11px 18px;
+    background:var(--purple);
+    border-radius:7px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:150px 25px 100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at 50% 35%,rgba(139,92,246,.27),transparent 38%),
+    radial-gradient(circle at 10% 80%,rgba(168,85,247,.12),transparent 30%),
+    var(--bg);
+    position:relative;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    border:1px solid rgba(139,92,246,.5);
+    background:rgba(139,92,246,.09);
+    padding:9px 17px;
+    border-radius:30px;
+    color:#c9b5ff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(52px,10vw,105px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:1000;
+}
+
+.hero h1 span{
+    color:var(--purple);
+}
+
+.hero h2{
+    margin-top:22px;
+    font-size:clamp(18px,3vw,27px);
+    color:#dddde5;
+    letter-spacing:2px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:22px auto 32px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 23px;
+    border-radius:8px;
+    background:var(--purple);
+    color:white;
+    font-weight:bold;
+    font-size:13px;
+    border:1px solid var(--purple);
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(139,92,246,.25);
+    background:#9b6af7;
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid #444451;
+}
+
+.btn-outline:hover{
+    border-color:var(--purple);
+}
+
+/* SECTIONS */
+
+.section{
+    max-width:1250px;
+    margin:auto;
+    padding:100px 25px;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-header .mini{
+    color:var(--purple);
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.section-header h2{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.section-header p{
+    color:var(--muted);
+}
+
+/* TOURNAMENT FILTER */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.filter{
+    background:#111118;
+    color:#bbb;
+    border:1px solid var(--border);
+    padding:10px 18px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+    background:var(--purple);
+    color:white;
+    border-color:var(--purple);
+}
+
+/* TOURNAMENT CARDS */
+
+.tournament-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.tournament{
+    background:linear-gradient(145deg,#121219,#0d0d12);
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.tournament:hover{
+    transform:translateY(-7px);
+    border-color:var(--purple);
+}
+
+.tournament-top{
+    padding:24px;
+    background:linear-gradient(135deg,rgba(139,92,246,.18),transparent);
+}
+
+.game-label{
+    color:#bd9fff;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    margin-bottom:13px;
+}
+
+.tournament h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.tournament-description{
+    color:#9999a7;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.tournament-info{
+    padding:20px 24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.info{
+    color:#888894;
+    font-size:11px;
+}
+
+.info strong{
+    display:block;
+    color:#e8e8ef;
+    font-size:14px;
+    margin-top:5px;
+}
+
+.tournament-bottom{
+    padding:0 24px 24px;
+}
+
+.full-btn{
+    width:100%;
+}
+
+/* GAMES */
+
+.games-section{
+    background:#0b0b10;
+}
+
+.games-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.game-card{
+    height:210px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:#111118;
+    transition:.3s;
+}
+
+.game-card:hover{
+    border-color:var(--purple);
+    transform:translateY(-7px);
+}
+
+.game-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.game-card h3{
+    font-size:23px;
+}
+
+.game-card p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:7px;
+}
+
+/* STATS */
+
+.stats{
+    max-width:1100px;
+    margin:0 auto;
+    padding:70px 25px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    text-align:center;
+    padding:28px 10px;
+    border-right:1px solid #24242d;
+}
+
+.stat:last-child{
+    border:none;
+}
+
+.stat h3{
+    font-size:38px;
+    color:var(--purple);
+}
+
+.stat p{
+    color:var(--muted);
+    margin-top:7px;
+    font-size:13px;
+}
+
+/* MATCHES */
+
+.match-list{
+    max-width:950px;
+    margin:auto;
+}
+
+.match{
+    display:grid;
+    grid-template-columns:100px 1fr 160px;
+    align-items:center;
+    gap:20px;
+    padding:20px;
+    margin-bottom:12px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+.match-game{
+    color:#bd9fff;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.match h4{
+    margin-top:5px;
+}
+
+.match-date{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.status{
+    text-align:right;
+}
+
+.status span{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:20px;
+    background:rgba(139,92,246,.1);
+    color:#c6b1ff;
+    font-size:11px;
+}
+
+/* LEADERBOARD */
+
+.table-wrap{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+th,td{
+    padding:17px 20px;
+    text-align:left;
+    border-bottom:1px solid #24242c;
+}
+
+th{
+    color:#aaa;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+td{
+    font-size:14px;
+}
+
+.rank{
+    color:var(--purple);
+    font-weight:bold;
+}
+
+/* RESULTS */
+
+.results-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.result{
+    padding:25px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:13px;
+}
+
+.result .winner{
+    color:#c4a8ff;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.result h3{
+    margin-bottom:10px;
+}
+
+.result p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* CTA */
+
+.cta{
+    max-width:1100px;
+    margin:40px auto 100px;
+    padding:65px 25px;
+    border-radius:20px;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,rgba(139,92,246,.28),transparent 60%),
+    #101016;
+    border:1px solid #302a3e;
+}
+
+.cta h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #22222b;
+    background:#040406;
+}
+
+.footer-inner{
+    max-width:1250px;
+    margin:auto;
+    padding:45px 25px;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-brand p{
+    color:#777783;
+    font-size:12px;
+    max-width:330px;
+    margin-top:10px;
+    line-height:1.6;
+}
+
+.footer-links{
+    display:flex;
+    gap:25px;
+    color:#aaa;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    color:var(--purple);
+}
+
+.copyright{
+    border-top:1px solid #17171e;
+    padding:20px;
+    text-align:center;
+    color:#60606a;
+    font-size:11px;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:2000;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    backdrop-filter:blur(8px);
+    padding:20px;
+    overflow-y:auto;
+}
+
+.modal.active{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-box{
+    width:100%;
+    max-width:650px;
+    background:#101016;
+    border:1px solid #353540;
+    border-radius:16px;
+    padding:30px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-size:25px;
+    color:#aaa;
+    cursor:pointer;
+}
+
+.close:hover{
+    color:white;
+}
+
+.modal-box h2{
+    margin-bottom:8px;
+}
+
+.modal-box > p{
+    color:#888894;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    color:#aaa;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:13px;
+    background:#08080d;
+    color:white;
+    border:1px solid #30303b;
+    border-radius:7px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:var(--purple);
+}
+
+.success{
+    display:none;
+    text-align:center;
+    padding:35px 10px;
+}
+
+.success .check{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.success h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.success p{
+    color:#999;
+    line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .tournament-grid,
+    .results-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .games-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        border:none;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        padding:20px;
+        background:#08080d;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-register{
+        display:none;
+    }
+
+    .tournament-grid,
+    .games-grid,
+    .results-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .match{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .status{
+        text-align:center;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .hero h1{
+        letter-spacing:1px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="nav-container">
+
+<a href="#home" class="logo">
+AURA <span>CORE</span>
+</a>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#tournaments">Tournaments</a></li>
+<li><a href="#games">Games</a></li>
+<li><a href="#matches">Matches</a></li>
+<li><a href="#leaderboard">Leaderboard</a></li>
+<li><a href="#results">Results</a></li>
+</ul>
+
+<a href="#tournaments" class="nav-register">
+REGISTER
+</a>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="badge">
+🏆 INDIA'S COMPETITIVE GAMING COMMUNITY
+</div>
+
+<h1>
+AURA <span>CORE</span>
+</h1>
+
+<h2>
+COMPETE. CONQUER. CREATE HISTORY.
+</h2>
+
+<p>
+Join competitive tournaments across Free Fire, BGMI and Valorant.
+Build your squad, compete against the best and climb the leaderboard.
+</p>
+
+<div class="buttons">
+
+<a href="#tournaments" class="btn">
+VIEW TOURNAMENTS
+</a>
+
+<a href="#games" class="btn btn-outline">
+EXPLORE GAMES
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stats-grid">
+
+<div class="stat">
+<h3>3</h3>
+<p>Supported Games</p>
+</div>
+
+<div class="stat">
+<h3>0</h3>
+<p>Tournaments Hosted</p>
+</div>
+
+<div class="stat">
+<h3>0</h3>
+<p>Players Registered</p>
+</div>
+
+<div class="stat">
+<h3>24/7</h3>
+<p>Community</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOURNAMENTS -->
+
+<section class="section" id="tournaments">
+
+<div class="section-header">
+
+<div class="mini">Compete Now</div>
+
+<h2>Upcoming Tournaments</h2>
+
+<p>Choose your game and register your squad.</p>
+
+</div>
+
+
+<div class="filters">
+
+<button class="filter active" onclick="filterGames('all',this)">
+ALL
+</button>
+
+<button class="filter" onclick="filterGames('freefire',this)">
+FREE FIRE
+</button>
+
+<button class="filter" onclick="filterGames('bgmi',this)">
+BGMI
+</button>
+
+<button class="filter" onclick="filterGames('valorant',this)">
+VALORANT
+</button>
+
+</div>
+
+
+<div class="tournament-grid">
+
+
+<!-- FREE FIRE -->
+
+<div class="tournament tournament-card" data-game="freefire">
+
+<div class="tournament-top">
+
+<div class="game-label">🔥 FREE FIRE</div>
+
+<h3>Aura Core Free Fire Cup</h3>
+
+<p class="tournament-description">
+Squad-based competitive Free Fire tournament.
+</p>
+
+</div>
+
+<div class="tournament-info">
+
+<div class="info">
+DATE
+<strong>Coming Soon</strong>
+</div>
+
+<div class="info">
+SLOTS
+<strong>48 Teams</strong>
+</div>
+
+<div class="info">
+PRIZE POOL
+<strong>Coming Soon</strong>
+</div>
+
+<div class="info">
+FORMAT
+<strong>Squad</strong>
+</div>
+
+</div>
+
+<div class="tournament-bottom">
+
+<button class="btn full-btn" onclick="openRegistration('Free Fire')">
+REGISTER NOW
+</button>
+
+</div>
+
+</div>
+
+
+<!-- BGMI -->
+
+<div class="tournament tournament-card" data-game="bgmi">
+
+<div class="tournament-top">
+
+<div class="game-label">🎯 BGMI</div>
+
+<h3>Aura Core BGMI Championship</h3>
+
+<p class="tournament-description">
+Battle it out with your squad for the championship.
+</p>
+
+</div>
+
+<div class="tournament-info">
+
+<div class="info">
+DATE
+<strong>Coming Soon</strong>
+</div>
+
+<div class="info">
+SLOTS
+<strong>25 Teams</strong>
+</div>
+
+<div class="info">
+PRIZE POOL
+<strong>Coming Soon</strong>
+</div>
+
+<div class="info">
+FORMAT
+<strong>Squad</strong>
+</div>
+
+</div>
+
+<div class="tournament-bottom">
+
+<button class="btn full-btn" onclick="openRegistration('BGMI')">
+REGISTER NOW
+</button>
+
+</div>
+
+</div>
+
+
+<!-- VALORANT -->
+
+<div class="tournament tournament-card" data-game="valorant">
+
+<div class="tournament-top">
+
+<div class="game-label">⚡ VALORANT</div>
+
+<h3>Aura Core Valorant Clash</h3>
+
+<p class="tournament-description">
+5v5 competitive Valorant tournament.
+</p>
+
+</div>
+
+<div class="tournament-info">
+
+<div class="info">
+DATE
+<strong>Coming Soon</strong>
+</div>
+
+<div class="info">
+SLOTS
+<strong>16 Teams</strong>
+</div>
+
+<div class="info">
+PRIZE POOL
+<strong>Coming Soon</strong>
+</div>
+
+<div class="info">
+FORMAT
+<strong>5v5</strong>
+</div>
+
+</div>
+
+<div class="tournament-bottom">
+
+<button class="btn full-btn" onclick="openRegistration('Valorant')">
+REGISTER NOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section class="section games-section" id="games">
+
+<div class="section-header">
+
+<div class="mini">Choose Your Battlefield</div>
+
+<h2>Our Games</h2>
+
+<p>Competitive gaming across multiple titles.</p>
+
+</div>
+
+
+<div class="games-grid">
+
+<div class="game-card">
+
+<div class="game-icon">🔥</div>
+
+<h3>Free Fire</h3>
+
+<p>Squad tournaments</p>
+
+</div>
+
+
+<div class="game-card">
+
+<div class="game-icon">🎯</div>
+
+<h3>BGMI</h3>
+
+<p>Squad tournaments</p>
+
+</div>
+
+
+<div class="game-card">
+
+<div class="game-icon">⚡</div>
+
+<h3>Valorant</h3>
+
+<p>5v5 tournaments</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MATCHES -->
+
+<section class="section" id="matches">
+
+<div class="section-header">
+
+<div class="mini">Schedule</div>
+
+<h2>Upcoming Matches</h2>
+
+<p>Stay updated with tournament schedules.</p>
+
+</div>
+
+
+<div class="match-list">
+
+<div class="match">
+
+<div>
+<div class="match-game">FREE FIRE</div>
+<h4>Match #01</h4>
+</div>
+
+<div class="match-date">
+📅 Date & Time — Coming Soon
+</div>
+
+<div class="status">
+<span>UPCOMING</span>
+</div>
+
+</div>
+
+
+<div class="match">
+
+<div>
+<div class="match-game">BGMI</div>
+<h4>Match #01</h4>
+</div>
+
+<div class="match-date">
+📅 Date & Time — Coming Soon
+</div>
+
+<div class="status">
+<span>UPCOMING</span>
+</div>
+
+</div>
+
+
+<div class="match">
+
+<div>
+<div class="match-game">VALORANT</div>
+<h4>Match #01</h4>
+</div>
+
+<div class="match-date">
+📅 Date & Time — Coming Soon
+</div>
+
+<div class="status">
+<span>UPCOMING</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LEADERBOARD -->
+
+<section class="section" id="leaderboard">
+
+<div class="section-header">
+
+<div class="mini">Rankings</div>
+
+<h2>Leaderboard</h2>
+
+<p>Top teams will appear here after tournaments.</p>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>#</th>
+<th>Team</th>
+<th>Game</th>
+<th>Matches</th>
+<th>Points</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="rank">01</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+<tr>
+<td class="rank">02</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+<tr>
+<td class="rank">03</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+<tr>
+<td class="rank">04</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section class="section" id="results">
+
+<div class="section-header">
+
+<div class="mini">Hall of Fame</div>
+
+<h2>Latest Results</h2>
+
+<p>Results from Aura Core tournaments.</p>
+
+</div>
+
+
+<div class="results-grid">
+
+<div class="result">
+
+<div class="winner">FREE FIRE</div>
+
+<h3>First Tournament</h3>
+
+<p>
+Results will be published here after the tournament.
+</p>
+
+</div>
+
+
+<div class="result">
+
+<div class="winner">BGMI</div>
+
+<h3>First Championship</h3>
+
+<p>
+Results will be published here after the tournament.
+</p>
+
+</div>
+
+
+<div class="result">
+
+<div class="winner">VALORANT</div>
+
+<h3>First Clash</h3>
+
+<p>
+Results will be published here after the tournament.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<div class="cta">
+
+<h2>READY TO COMPETE?</h2>
+
+<p>
+Register your squad and enter the battlefield.
+</p>
+
+<button class="btn" onclick="openRegistration('')">
+REGISTER YOUR TEAM
+</button>
+
+<a
+href="https://www.instagram.com/auraflare_X2/"
+target="_blank"
+class="btn btn-outline">
+FOLLOW INSTAGRAM
+</a>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-inner">
+
+<div class="footer-brand">
+
+<div class="logo">
+AURA <span>CORE</span>
+</div>
+
+<p>
+Aura Core Esports is a competitive gaming community
+built for players who want to compete, improve and win.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="#home">Home</a>
+<a href="#tournaments">Tournaments</a>
+<a href="#matches">Matches</a>
+<a href="#leaderboard">Leaderboard</a>
+
+<a
+href="https://www.instagram.com/auraflare_X2/"
+target="_blank">
+Instagram
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+© 2026 Aura Core Esports. All Rights Reserved.
+</div>
+
+</footer>
+
+
+<!-- REGISTRATION MODAL -->
+
+<div class="modal" id="registrationModal">
+
+<div class="modal-box">
+
+<div class="close" onclick="closeRegistration()">×</div>
+
+<div id="registrationFormArea">
+
+<h2>Team Registration</h2>
+
+<p>
+Register your squad for an Aura Core Esports tournament.
+</p>
+
+
+<form onsubmit="submitRegistration(event)">
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>SELECT GAME</label>
+
+<select id="game" required>
+
+<option value="">Choose Game</option>
+<option value="Free Fire">Free Fire</option>
+<option value="BGMI">BGMI</option>
+<option value="Valorant">Valorant</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>TOURNAMENT</label>
+
+<select required>
+
+<option value="">Choose Tournament</option>
+<option>Aura Core Free Fire Cup</option>
+<option>Aura Core BGMI Championship</option>
+<option>Aura Core Valorant Clash</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>TEAM NAME</label>
+
+<input
+type="text"
+placeholder="Enter your team name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>CAPTAIN NAME</label>
+
+<input
+type="text"
+placeholder="Captain name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>WHATSAPP NUMBER</label>
+
+<input
+type="tel"
+placeholder="+91 XXXXX XXXXX"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>PLAYER 1 IGN / UID</label>
+
+<input
+type="text"
+placeholder="IGN / UID"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>PLAYER 2 IGN / UID</label>
+
+<input
+type="text"
+placeholder="IGN / UID"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>PLAYER 3 IGN / UID</label>
+
+<input
+type="text"
+placeholder="IGN / UID"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>PLAYER 4 IGN / UID</label>
+
+<input
+type="text"
+placeholder="IGN / UID"
+required>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>SUBSTITUTE (OPTIONAL)</label>
+
+<input
+type="text"
+placeholder="Substitute IGN / UID">
+
+</div>
+
+
+<div class="form-group full">
+
+<button type="submit" class="btn full-btn">
+SUBMIT REGISTRATION
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+
+<div class="success" id="success">
+
+<div class="check">✅</div>
+
+<h3>Registration Received!</h3>
+
+<p>
+Your registration form has been completed.
+Our tournament team will contact the captain
+with further details.
+</p>
+
+<br>
+
+<button class="btn" onclick="closeRegistration()">
+CLOSE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    document
+    .getElementById("navLinks")
+    .classList.toggle("open");
+
+}
+
+
+/* TOURNAMENT FILTER */
+
+function filterGames(game,button){
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(function(btn){
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document
+    .querySelectorAll(".tournament-card")
+    .forEach(function(card){
+
+        if(game === "all"){
+            card.style.display="block";
+        }
+
+        else if(card.dataset.game === game){
+            card.style.display="block";
+        }
+
+        else{
+            card.style.display="none";
+        }
+
+    });
+
+}
+
+
+/* REGISTRATION */
+
+function openRegistration(game){
+
+    document
+    .getElementById("registrationModal")
+    .classList.add("active");
+
+    document
+    .getElementById("registrationFormArea")
+    .style.display="block";
+
+    document
+    .getElementById("success")
+    .style.display="none";
+
+    if(game){
+
+        document
+        .getElementById("game")
+        .value=game;
+
+    }
+
+}
+
+
+function closeRegistration(){
+
+    document
+    .getElementById("registrationModal")
+    .classList.remove("active");
+
+}
+
+
+function submitRegistration(event){
+
+    event.preventDefault();
+
+    document
+    .getElementById("registrationFormArea")
+    .style.display="none";
+
+    document
+    .getElementById("success")
+    .style.display="block";
+
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+document
+.getElementById("registrationModal")
+.addEventListener("click",function(event){
+
+    if(event.target === this){
+        closeRegistration();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
