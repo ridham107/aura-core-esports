@@ -1680,7 +1680,7 @@ function openRegistration(game){
         .value=game;
 
     }
-async function submitRegistration(event) {
+async async function submitRegistration(event) {      event.preventDefault();      const form = event.target;     const inputs = form.querySelectorAll("input");     const selects = form.querySelectorAll("select");      const data = new URLSearchParams();      data.append("game", selects[0].value);     data.append("tournament", selects[1].value);      data.append("teamName", inputs[0].value);     data.append("captain", inputs[1].value);     data.append("whatsapp", inputs[2].value);     data.append("player1", inputs[3].value);     data.append("player2", inputs[4].value);     data.append("player3", inputs[5].value);     data.append("player4", inputs[6].value);     data.append("player5", inputs[7].value);      const button = form.querySelector("button[type='submit']");      button.disabled = true;     button.textContent = "SUBMITTING...";      try {          await fetch(             "https://script.google.com/macros/s/AKfycbzQKNmjQBEyKytqjGHZZDs3y34kaeqZztlnzrN7MPQtteXgPRygJOoLxfj9v6r5Zm2DWg/exec",             {                 method: "POST",                 mode: "no-cors",                 body: data             }         );          document.getElementById("registrationFormArea").style.display = "none";         document.getElementById("success").style.display = "block";      } catch (error) {          alert("Registration failed. Please try again.");          button.disabled = false;         button.textContent = "SUBMIT REGISTRATION";      } } {
 
     event.preventDefault();
 
